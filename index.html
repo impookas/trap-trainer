@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Trap Trainer</title>
+<link rel="stylesheet" href="https://unpkg.com/@chessboard-js/chessboard.js@1.0.0/css/chessboard.css">
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://unpkg.com/@chessboard-js/chessboard.js@1.0.0/js/chessboard.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/chess.js/0.10.3/chess.min.js"></script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="app">
+  <div id="header">
+    <h1>🎯 Trap Trainer</h1>
+    <div id="controls">
+      <label>Play as:
+        <select id="side-select">
+          <option value="white">White</option>
+          <option value="black">Black</option>
+        </select>
+      </label>
+      <button id="btn-reset">Reset</button>
+      <button id="btn-undo">Undo</button>
+    </div>
+  </div>
+  <div id="main">
+    <div id="board-container">
+      <div id="board"></div>
+    </div>
+    <div id="panel">
+      <div id="trap-name" class="panel-section">—</div>
+      <div id="trap-state" class="panel-section"><span class="label">State:</span> <span id="state-text">normal</span></div>
+      <div id="trap-move" class="panel-section"><span class="label">Play:</span> <span id="move-text">—</span></div>
+      <div id="trap-why" class="panel-section"><span class="label">Why:</span> <span id="why-text">—</span></div>
+      <div id="trap-response" class="panel-section"><span class="label">Likely response:</span> <span id="response-text">—</span></div>
+      <div id="trap-fallback" class="panel-section"><span class="label">Fallback:</span> <span id="fallback-text">—</span></div>
+      <div id="move-history" class="panel-section">
+        <span class="label">Moves:</span>
+        <div id="history-text"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="traps.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
