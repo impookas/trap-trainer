@@ -6,7 +6,7 @@ $(function () {
   let playerColor = 'white';
 
   function onDragStart(source, piece, position, orientation) {
-    if (game.game_over()) return false;
+    if (typeof game.game_over === "function" ? game.game_over() : game.isGameOver()) return false;
     if ((game.turn() === 'w' && playerColor === 'black') ||
         (game.turn() === 'b' && playerColor === 'white')) return false;
     if ((game.turn() === 'w' && piece.search(/^b/) !== -1) ||
@@ -110,7 +110,8 @@ $(function () {
 
     const from = m.from;
     const to = m.to;
-    const $boardEl = $('#board .board-b72btd');
+    let $boardEl = $('#board .board-b72btd');
+    if (!$boardEl.length) $boardEl = $('#board');
     if (!$boardEl.length) return;
 
     const squareSize = $boardEl.width() / 8;
@@ -228,7 +229,7 @@ $(function () {
     playerColor = $(this).val();
     game = new Chess();
     moveStack = [];
-    board.destroy();
+    if (board && typeof board.destroy === 'function') board.destroy();
     board = Chessboard('board', cfg());
     updatePanel();
   });
