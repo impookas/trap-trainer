@@ -123,6 +123,34 @@ body {
 #move-list .move-san.active { background: #f0c040; color: #1a1a2e; font-weight: 700; }
 #move-list .move-san.trap-move { color: #ff6b6b; }
 
+/* Branch selector */
+.branch-selector {
+  margin-top: 12px;
+  padding-top: 10px;
+  border-top: 1px dashed #0f3460;
+}
+.branch-label {
+  display: block;
+  color: #c8a0ff;
+  font-size: 0.78rem;
+  margin-bottom: 6px;
+  font-weight: 600;
+}
+.branch-btn {
+  display: inline-block;
+  background: #1a1a3e;
+  color: #c8a0ff;
+  border: 1px solid #2a1a4a;
+  padding: 4px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.78rem;
+  margin: 2px 4px 2px 0;
+  transition: background 0.15s;
+}
+.branch-btn:hover { background: #2a1a4a; }
+.branch-btn.active { background: #5a3a8a; color: #fff; border-color: #8a5acc; }
+
 /* Responsive */
 @media (max-width: 850px) {
   #main { flex-direction: column; align-items: center; }
