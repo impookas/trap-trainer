@@ -65,7 +65,7 @@ $(function () {
     // Board orientation
     const orient = trap.side === 'black' ? 'black' : 'white';
     if (board) board.destroy();
-    board = Chessboard('board', { position: 'start', orientation: orient, draggable: false });
+    board = Chessboard('board', { position: 'start', orientation: orient, draggable: false, pieceTheme: 'https://chessboardjs.com/img/chesspieces/wikipedia/{piece}.png' });
 
     // Show trap view
     $('#library-view').hide();
