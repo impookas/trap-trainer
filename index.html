@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Trap Trainer</title>
+<title>Trap Book — Interactive Chess Traps</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chessboard-js/1.0.0/chessboard-1.0.0.min.css">
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/chessboard-js/1.0.0/chessboard-1.0.0.min.js"></script>
@@ -12,33 +12,62 @@
 </head>
 <body>
 <div id="app">
-  <div id="header">
-    <h1>🎯 Trap Trainer</h1>
-    <div id="controls">
-      <label>Play as:
-        <select id="side-select">
-          <option value="white">White</option>
-          <option value="black">Black</option>
-        </select>
-      </label>
-      <button id="btn-reset">Reset</button>
-      <button id="btn-undo">Undo</button>
+  <!-- LIBRARY VIEW -->
+  <div id="library-view">
+    <div id="lib-header">
+      <h1>📖 Trap Book</h1>
+      <p class="subtitle">Interactive chess traps — pick one and step through move by move</p>
     </div>
+    <div id="trap-grid"></div>
   </div>
-  <div id="main">
-    <div id="board-container">
-      <div id="board"></div>
+
+  <!-- TRAP VIEW -->
+  <div id="trap-view" style="display:none">
+    <div id="header">
+      <button id="btn-back" class="btn-back">← Library</button>
+      <div id="header-info">
+        <h2 id="trap-title"></h2>
+        <span id="trap-side-badge" class="badge"></span>
+        <div id="trap-tags"></div>
+      </div>
     </div>
-    <div id="panel">
-      <div id="trap-name" class="panel-section">—</div>
-      <div id="trap-state" class="panel-section"><span class="label">State:</span> <span id="state-text">normal</span></div>
-      <div id="trap-move" class="panel-section"><span class="label">Play:</span> <span id="move-text">—</span></div>
-      <div id="trap-why" class="panel-section"><span class="label">Why:</span> <span id="why-text">—</span></div>
-      <div id="trap-response" class="panel-section"><span class="label">Likely response:</span> <span id="response-text">—</span></div>
-      <div id="trap-fallback" class="panel-section"><span class="label">Fallback:</span> <span id="fallback-text">—</span></div>
-      <div id="move-history" class="panel-section">
-        <span class="label">Moves:</span>
-        <div id="history-text"></div>
+    <div id="main">
+      <div id="board-section">
+        <div id="board"></div>
+        <div id="step-controls">
+          <button id="btn-start" title="Start">⏮</button>
+          <button id="btn-prev" title="Previous">◀</button>
+          <span id="move-counter">0 / 0</span>
+          <button id="btn-next" title="Next">▶</button>
+          <button id="btn-end" title="End">⏭</button>
+          <button id="btn-flip" title="Flip board">🔄</button>
+        </div>
+      </div>
+      <div id="panel">
+        <div id="move-notation" class="panel-section">
+          <span class="label">Move</span>
+          <div id="notation-text">—</div>
+        </div>
+        <div id="move-explanation" class="panel-section">
+          <span class="label">Explanation</span>
+          <div id="explanation-text">Select a trap from the library to begin.</div>
+        </div>
+        <div id="trap-moment-box" class="panel-section" style="display:none">
+          <span class="label">🔥 Trap Moment!</span>
+          <div id="trap-moment-text"></div>
+        </div>
+        <div id="fallback-section" class="panel-section">
+          <span class="label">What if they avoid it?</span>
+          <div id="fallback-text">—</div>
+        </div>
+        <div id="summary-section" class="panel-section">
+          <span class="label">Summary</span>
+          <div id="summary-text">—</div>
+        </div>
+        <div id="move-list-section" class="panel-section">
+          <span class="label">Full Line</span>
+          <div id="move-list"></div>
+        </div>
       </div>
     </div>
   </div>
